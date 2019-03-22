@@ -1,0 +1,20 @@
+<div class="content" *ngIf="!waiting; else signIn">
+  <mat-form-field hideRequiredMarker="true">
+    <input matInput placeholder="Username" [formControl]="userName" type="text" cdkFocusInitial required />
+    <mat-error *ngIf="userName.invalid">{{ getErrorMessageUserName() }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field hideRequiredMarker="true">
+    <input matInput placeholder="Password" [formControl]="password" type="password" required />
+    <mat-error *ngIf="password.invalid">{{ getErrorMessagePassword() }}</mat-error>
+  </mat-form-field>
+
+  <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+  <!-- removed since it was causing vertical scrollbar due to a bug in library -->
+  <!--<mat-checkbox color="primary">Keep me signed in</mat-checkbox>-->
+</div>
+
+<ng-template #signIn>
+  <h6>Signing In</h6>
+  <mat-spinner *ngIf="waiting" mode="indeterminate"></mat-spinner>
+</ng-template>

@@ -1,0 +1,44 @@
+<mat-toolbar class="mat-elevation-z8 navbar" role="heading">
+  <mat-toolbar-row>
+    <a mat-button routerLink="/" aria-label="fertilizer logo">
+      <img class="logo" src="../../assets/images/fertilizer_logo.png" alt="fertilizer" />
+    </a>
+
+    <a mat-button class="navbar-hide-small" routerLink="jobs" routerLinkActive="active"> Jobs </a>
+
+    <a mat-button class="navbar-hide-small" routerLink="companies" routerLinkActive="active"> Companies </a>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="spacer"></span>
+
+    <div *ngIf="(authService.currentUser$ | async) as user">
+      <img
+        class="user-avatar mat-elevation-z2"
+        src="{{ user.imageUrl || './../../../assets/images/man.png' }}"
+        [matMenuTriggerFor]="userMenu"
+      />
+
+      <mat-menu #userMenu="matMenu" [overlapTrigger]="false" xPosition="before">
+        <div class="userInfo"></div>
+
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Help</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Settings</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Help</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Help</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="signOut()">Sign Out</button>
+      </mat-menu>
+    </div>
+
+
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="navbar-show-small second-row">
+    <a mat-button class="spacer" routerLink="jobs" routerLinkActive="active"> Jobs </a>
+    <a mat-button class="spacer" routerLink="companies" routerLinkActive="active"> Companies </a>
+  </mat-toolbar-row>
+</mat-toolbar>
