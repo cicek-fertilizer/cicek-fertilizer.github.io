@@ -105,12 +105,21 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     this.stores = await this.storeService.getStores();
-    const res = await this.productlookService.getGlobalCategoryStatistics();
-    console.log(res);
-    Object.entries(res).forEach(([key, value]) => {
-      this.globalCategoryStats.push(new NameValue(key, value));
-    });
-    console.log(this.globalCategoryStats);
+    // const res = await this.productlookService.getGlobalCategoryStatistics();
+    // console.log(res);
+    // Object.entries(res).forEach(([key, value]) => {
+    //   this.globalCategoryStats.push(new NameValue(key, value));
+    // });
+    // console.log(this.globalCategoryStats);
+    const globalData = [
+      new NameValue('Accessory', 401),
+      new NameValue('Flower', 1040),
+      new NameValue('General', 280),
+      new NameValue('Office', 40),
+      new NameValue('Toy', 160),
+      new NameValue('Accessory', 4)
+    ];
+    this.globalCategoryStats = globalData;
     this.heatMapData = [
       {
         name: 'Column 1',

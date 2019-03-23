@@ -1,14 +1,14 @@
 <div class="pickers">
   <mat-form-field class="store-picker">
     <mat-label>Select store to see stats</mat-label>
-    <mat-select [(value)]="selectedStoreId">
+    <mat-select [(value)]="selectedStoreId" (selectionChange)="storeChanged($event.value)">
       <mat-option>General</mat-option>
       <mat-option *ngFor="let store of stores" [value]="store.storeId">{{ store.district }}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field class="product-picker">
     <mat-label>Select product to see stats</mat-label>
-    <mat-select [(value)]="selectedProductId">
+    <mat-select [(value)]="selectedProductId" (selectionChange)="productChanged($event.value)">
       <mat-option>General</mat-option>
       <mat-option *ngFor="let product of products" [value]="product.productId">{{ product.productName }}</mat-option>
     </mat-select>

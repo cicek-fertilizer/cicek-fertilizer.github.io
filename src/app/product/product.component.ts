@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '../shared/models/store.model';
 import { ProductlookService } from '../shared/services/productlook.service';
+import { Product } from '../shared/models/product.model';
+import { StoreService } from '../shared/services/store.service';
+import { ProductService } from '../shared/services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -10,12 +13,7 @@ import { ProductlookService } from '../shared/services/productlook.service';
 export class ProductComponent implements OnInit {
   selectedStoreId: number;
   selectedProductId: number;
-  products = [
-    { productId: 1, productName: 'Ayıcık' },
-    { productId: 2, productName: 'Kanayan Gül' },
-    { productId: 3, productName: 'Gözü Yaşlı Penguen' }
-  ];
-
+  products: Product[];
   stores: Store[];
 
   fakeData = [
@@ -27,8 +25,7 @@ export class ProductComponent implements OnInit {
       name: 'Total Purchases',
       value: 5000000
     },
-    { name: '% Conversion Rate', value: `${((5000000 / 8940000) * 100).toFixed(2)}` },
-    { name: 'Israel', value: 3000000 }
+    { name: '% Conversion Rate', value: `${((5000000 / 8940000) * 100).toFixed(2)}` }
   ];
 
   fakeSeriesData = [
@@ -106,7 +103,18 @@ export class ProductComponent implements OnInit {
     return this.products.find(o => o.productId === productId).productName;
   }
 
-  constructor(private productlookService: ProductlookService) {}
+  constructor(
+    private productlookService: ProductlookService,
+    private storeService: StoreService,
+    private productService: ProductService
+  ) {}
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    this.stores = await this.storeService.getStores();
+    this.products = await this.productService.getProducts();
+  }
+
+  async storeChanged(newValue: number) {}
+
+  async productChanged(newValue: number) {}
 }
