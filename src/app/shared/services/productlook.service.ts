@@ -20,6 +20,12 @@ export class ProductlookService {
     return result;
   }
 
+  async getLocalStatsOfItem(productId: number, storeId: number) {
+    const params = new HttpParams().append('productId', `${productId}`).append('storeId', `${storeId}`);
+    const result = await this.apiService.get('productlook/productInfo', params).toPromise();
+    return result;
+  }
+
   async getGlobalCategoryStatistics() {
     const result = await this.apiService.get('productlook/category').toPromise();
     return result;

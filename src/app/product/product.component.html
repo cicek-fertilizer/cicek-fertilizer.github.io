@@ -3,7 +3,7 @@
     <mat-label>Select store to see stats</mat-label>
     <mat-select [(value)]="selectedStoreId" (selectionChange)="storeChanged($event.value)">
       <mat-option>General</mat-option>
-      <mat-option *ngFor="let store of stores" [value]="store.storeId">{{ store.district }}</mat-option>
+      <mat-option *ngFor="let store of stores" [value]="store.storeId">{{ store.storeName }}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field class="product-picker">
@@ -20,7 +20,7 @@
   <mat-card-content>
     <div class="first-row">
       <!--<fertilizer-number-cards [data]="fakeData"></fertilizer-number-cards>-->
-      <fertilizer-number-cards class="grow" [data]="fakeData"></fertilizer-number-cards>
+      <fertilizer-number-cards class="grow" [data]="globalData"></fertilizer-number-cards>
     </div>
   </mat-card-content>
 </mat-card>
@@ -30,7 +30,7 @@
   <mat-card-content>
     <div class="first-row">
       <!--<fertilizer-number-cards [data]="fakeData"></fertilizer-number-cards>-->
-      <fertilizer-number-cards class="grow" [data]="fakeData"></fertilizer-number-cards>
+      <fertilizer-number-cards class="grow" [data]="localData"></fertilizer-number-cards>
     </div>
   </mat-card-content>
 </mat-card>

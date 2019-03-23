@@ -4,6 +4,7 @@ import { ProductlookService } from '../shared/services/productlook.service';
 import { Product } from '../shared/models/product.model';
 import { StoreService } from '../shared/services/store.service';
 import { ProductService } from '../shared/services/product.service';
+import { NameValue } from '../shared/models/name-value.model.ts';
 
 @Component({
   selector: 'app-product',
@@ -27,6 +28,9 @@ export class ProductComponent implements OnInit {
     },
     { name: '% Conversion Rate', value: `${((5000000 / 8940000) * 100).toFixed(2)}` }
   ];
+
+  globalData: NameValue[];
+  localData: NameValue[];
 
   fakeSeriesData = [
     {
@@ -114,7 +118,36 @@ export class ProductComponent implements OnInit {
     this.products = await this.productService.getProducts();
   }
 
-  async storeChanged(newValue: number) {}
+  async storeChanged(newValue: number) {
+    if (this.selectedStoreId) {
+      const localRes = await this.productlookService.getLocalStatsOfItem(this.selectedProductId, this.selectedStoreId);
+      const newData1 = [
+        new NameValue('Total Views', localRes.lookNumber),
+        new NameValue('Total Purchases', localRes.purchaseNumber),
+        new NameValue('% Conversion Rate', `${((localRes.purchaseNumber / localRes.lookNumber) * 100).toFixed(2)}`)
+      ];
+      this.localData = newData1;
+    }
+  }
 
-  async productChanged(newValue: number) {}
+  async productChanged(newValue: number) {
+    if (this.selectedStoreId) {
+      const localRes = await this.productlookService.getLocalStatsOfItem(this.selectedProductId, this.selectedStoreId);
+      console.log(localRes);
+      const newData1 = [
+        new NameValue('Total Views', localRes.lookNumber),
+        new NameValue('Total Purchases', localRes.purchaseNumber),
+        new NameValue('% Conversion Rate', `${((localRes.purchaseNumber / localRes.lookNumber) * 100).toFixed(2)}`)
+      ];
+      this.localData = newData1;
+    }
+
+    const globalRes = await this.productlookService.getGlobalStatsOfItem(this.selectedProductId);
+    const newData = [
+      new NameValue('Total Views', globalRes.lookNumber),
+      new NameValue('Total Purchases', globalRes.purchaseNumber),
+      new NameValue('% Conversion Rate', `${((globalRes.purchaseNumber / globalRes.lookNumber) * 100).toFixed(2)}`)
+    ];
+    this.globalData = newData;
+  }
 }
