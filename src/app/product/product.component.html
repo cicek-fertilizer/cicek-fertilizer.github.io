@@ -1,0 +1,45 @@
+<div class="pickers">
+  <mat-form-field class="store-picker">
+    <mat-label>Select store to see stats</mat-label>
+    <mat-select [(value)]="selectedStoreId">
+      <mat-option>General</mat-option>
+      <mat-option *ngFor="let store of stores" [value]="store.storeId">{{ store.district }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="product-picker">
+    <mat-label>Select product to see stats</mat-label>
+    <mat-select [(value)]="selectedProductId">
+      <mat-option>General</mat-option>
+      <mat-option *ngFor="let product of products" [value]="product.productId">{{ product.productName }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<mat-card *ngIf="selectedProductId">
+  <mat-card-title>{{ getProductName(selectedProductId) }} Today's Global Statistics</mat-card-title>
+  <mat-card-content>
+    <div class="first-row">
+      <!--<fertilizer-number-cards [data]="fakeData"></fertilizer-number-cards>-->
+      <fertilizer-number-cards class="grow" [data]="fakeData"></fertilizer-number-cards>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="selectedStoreId && selectedProductId">
+  <mat-card-title>{{ getProductName(selectedProductId) }} Today's Store Statistics</mat-card-title>
+  <mat-card-content>
+    <div class="first-row">
+      <!--<fertilizer-number-cards [data]="fakeData"></fertilizer-number-cards>-->
+      <fertilizer-number-cards class="grow" [data]="fakeData"></fertilizer-number-cards>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="selectedStoreId && selectedProductId">
+  <mat-card-title>{{ getProductName(selectedProductId) }} Store View Trend</mat-card-title>
+  <mat-card-content>
+    <div class="first-row">
+      <fertilizer-calendar-heat-map class="grow" [data]="fakeSeriesData"></fertilizer-calendar-heat-map>
+    </div>
+  </mat-card-content>
+</mat-card>

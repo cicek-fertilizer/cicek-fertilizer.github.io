@@ -1,9 +1,26 @@
-<mat-card>
-  <mat-card-title>Category View Statistics</mat-card-title>
-  <mat-card-content>
-      <div class="first-row">
-          <!--<fertilizer-number-cards [data]="fakeData"></fertilizer-number-cards>-->
-          <fertilizer-advanced-pie class="grow" [data]="fakeData"></fertilizer-advanced-pie>
-      </div>
-  </mat-card-content>
-</mat-card>
+<div class="content">
+  <mat-form-field class="store-picker">
+    <mat-label>Select store to see stats</mat-label>
+    <mat-select [(value)]="selectedStoreId">
+      <mat-option>General</mat-option>
+      <mat-option *ngFor="let store of stores" [value]="store.storeId">{{store.district}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-card *ngIf="selectedStoreId">
+    <mat-card-title>Store Heat Map</mat-card-title>
+    <mat-card-content>
+        <div class="first-row">
+            <fertilizer-heat-map class="grow" [data]="fakeSeriesData"></fertilizer-heat-map>
+        </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Category View Statistics</mat-card-title>
+    <mat-card-content>
+        <div class="first-row">
+            <!--<fertilizer-number-cards [data]="fakeData"></fertilizer-number-cards>-->
+            <fertilizer-advanced-pie class="grow" [data]="fakeData"></fertilizer-advanced-pie>
+        </div>
+    </mat-card-content>
+  </mat-card>
+</div>

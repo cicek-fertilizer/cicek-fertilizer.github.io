@@ -4,9 +4,9 @@
       <img class="logo" src="../../assets/images/fertilizer_logo.png" alt="fertilizer" />
     </a>
 
-    <a mat-button class="navbar-hide-small" routerLink="jobs" routerLinkActive="active"> Jobs </a>
+    <a mat-button class="navbar-hide-small" routerLink="store" routerLinkActive="active"> Store </a>
 
-    <a mat-button class="navbar-hide-small" routerLink="companies" routerLinkActive="active"> Companies </a>
+    <a mat-button class="navbar-hide-small" routerLink="product" routerLinkActive="active"> Product </a>
 
     <!-- This fills the remaining space of the current row -->
     <span class="spacer"></span>
@@ -24,12 +24,6 @@
         <button mat-menu-item>Settings</button>
         <button mat-menu-item>Help</button>
         <mat-divider></mat-divider>
-        <button mat-menu-item>Settings</button>
-        <mat-divider></mat-divider>
-        <button mat-menu-item>Help</button>
-        <button mat-menu-item>Settings</button>
-        <button mat-menu-item>Help</button>
-        <mat-divider></mat-divider>
         <button mat-menu-item (click)="signOut()">Sign Out</button>
       </mat-menu>
     </div>
@@ -38,7 +32,7 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row class="navbar-show-small second-row">
-    <a mat-button class="spacer" routerLink="jobs" routerLinkActive="active"> Jobs </a>
-    <a mat-button class="spacer" routerLink="companies" routerLinkActive="active"> Companies </a>
+    <a mat-button class="spacer" routerLink="store" routerLinkActive="active"> Store </a>
+    <a mat-button class="spacer" routerLink="product" routerLinkActive="active"> Product </a>
   </mat-toolbar-row>
 </mat-toolbar>

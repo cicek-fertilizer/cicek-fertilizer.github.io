@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -24,6 +25,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AdvancedPieComponent } from './advanced-pie/advanced-pie.component';
 import { NumberCardsComponent } from './number-cards/number-cards.component';
+import { HeatMapComponent } from './heat-map/heat-map.component';
+import { ProductComponent } from './product/product.component';
+import { CalendarHeatMapComponent } from './calendar-heat-map/calendar-heat-map.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { NumberCardsComponent } from './number-cards/number-cards.component';
     LoginComponent,
     HomeComponent,
     AdvancedPieComponent,
-    NumberCardsComponent
+    NumberCardsComponent,
+    HeatMapComponent,
+    ProductComponent,
+    CalendarHeatMapComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +56,7 @@ import { NumberCardsComponent } from './number-cards/number-cards.component';
     MatMenuModule,
     MatDividerModule,
     MatCardModule,
+    MatSelectModule,
     NgxChartsModule
   ],
   providers: [],

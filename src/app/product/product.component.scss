@@ -1,0 +1,23 @@
+.first-row {
+  display: flex;
+  padding: 5px; /* this */
+}
+
+.pickers {
+  display: flex;
+  padding: 5px; /* this */
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.store-picker {
+  flex-grow: 1;
+  margin: 5px;
+}
+
+.product-picker {
+  flex-grow: 1;
+  margin: 5px;
+}
