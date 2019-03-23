@@ -9,11 +9,9 @@ import { AuthService } from '../shared/services/auth.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  constructor(public authService: AuthService, private router: Router) {}
 
-  constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   showSignIn(): void {
     this.router.navigate(['/login']);

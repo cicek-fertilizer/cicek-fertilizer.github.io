@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://10.12.99.16:4000/'
+  api_url: 'http://fertilizer.y97khcqbsp.us-west-2.elasticbeanstalk.com/'
 };
 
 /*
