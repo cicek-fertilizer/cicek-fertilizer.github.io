@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '../shared/models/store.model';
+import { ProductlookService } from '../shared/services/productlook.service';
 
 @Component({
   selector: 'app-product',
@@ -15,23 +16,18 @@ export class ProductComponent implements OnInit {
     { productId: 3, productName: 'Gözü Yaşlı Penguen' }
   ];
 
-  stores = [
-    new Store(1, 10.2312321, 12.1231231, 'Istanbul', 'Beyoğlu'),
-    new Store(2, 10.2312321, 12.1231231, 'Istanbul', 'Kadıköy'),
-    new Store(3, 10.2312321, 12.1231231, 'Istanbul', 'Beşiktaş'),
-    new Store(4, 10.2312321, 12.1231231, 'Istanbul', 'Sarıyer')
-  ];
+  stores: Store[];
 
   fakeData = [
     {
-      name: 'Germany',
+      name: 'Total Views',
       value: 8940000
     },
     {
-      name: 'USA',
+      name: 'Total Purchases',
       value: 5000000
     },
-    { name: 'Turkey', value: 4000000 },
+    { name: '% Conversion Rate', value: `${((5000000 / 8940000) * 100).toFixed(2)}` },
     { name: 'Israel', value: 3000000 }
   ];
 
@@ -110,7 +106,7 @@ export class ProductComponent implements OnInit {
     return this.products.find(o => o.productId === productId).productName;
   }
 
-  constructor() {}
+  constructor(private productlookService: ProductlookService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {}
 }
