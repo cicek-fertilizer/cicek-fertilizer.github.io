@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { detectChanges } from '@angular/core/src/render3';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'fertilizer-heat-map',
   templateUrl: './heat-map.component.html',
   styleUrls: ['./heat-map.component.scss']
 })
-export class HeatMapComponent implements OnInit, OnChanges {
+export class HeatMapComponent implements OnInit {
   @Input('data') data: any[];
 
   solar = {
@@ -30,10 +29,4 @@ export class HeatMapComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit() {}
-
-  ngOnChanges() {
-    console.log('hello from heat map');
-    console.log(this.data);
-    //detectChanges();
-  }
 }

@@ -13,4 +13,15 @@ export class ProductlookService {
     const result = await this.apiService.get('productlook/storeShelf', params).toPromise();
     return result;
   }
+
+  async getGlobalStatsOfItem(productId: number) {
+    const params = new HttpParams().set('productId', `${productId}`);
+    const result = await this.apiService.get('productlook/productInfo', params).toPromise();
+    return result;
+  }
+
+  async getGlobalCategoryStatistics() {
+    const result = await this.apiService.get('productlook/category').toPromise();
+    return result;
+  }
 }
